@@ -1,5 +1,5 @@
 FROM python:3.6
-LABEL description="virtual BMC" version="1.0"
+LABEL description="virtual BMC" version="1.6"
 MAINTAINER github/ElCoyote27
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -27,6 +27,8 @@ RUN apt-get clean
 RUN rm -Rf /var/lib/apt/lists/*
 RUN rm -Rf /var/cache/apt/archives/*.deb
 RUN rm -Rf /var/cache/apt/archives/partial/*
+
+ENV PATH="/usr/local/bin:${PATH}"
 
 CMD ["/usr/local/bin/vbmcd", "--foreground"]
 
