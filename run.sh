@@ -14,7 +14,6 @@ else
 	-v /var/log/virtualbmc:/var/log/virtualbmc \
 	-v /root/.vbmc:/root/.vbmc \
 	--name ${NAME} \
-	krynn-vbmc:latest \
-	vbmcd --foreground
+	krynn-vbmc:latest
 fi
 

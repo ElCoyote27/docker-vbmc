@@ -16,13 +16,16 @@ RUN echo 'Acquire::http::Proxy "http://imladris.lasthome.solace.krynn:3128";' >>
 # RUN sed -i s/http/ftp/ /etc/apt/sources.list
 
 RUN apt-get update --fix-missing
+# RUN apt-get dist-upgrade -y
 
 # Setup
 USER root
 
-RUN apt-get install -y libvirt-dev
-RUN pip install virtualbmc
+# Packages
+RUN apt-get install -y libvirt-dev ipmitool python python-setuptools python-six python-cryptography libvirt0
+RUN apt-get install -y python-pip pkg-config libvirt-dev
 RUN apt-get clean
+RUN pip install virtualbmc
 
 RUN rm -Rf /var/lib/apt/lists/*
 RUN rm -Rf /var/cache/apt/archives/*.deb
@@ -30,5 +33,9 @@ RUN rm -Rf /var/cache/apt/archives/partial/*
 
 ENV PATH="/usr/local/bin:${PATH}"
 
-CMD ["/usr/local/bin/vbmcd", "--foreground"]
+ENTRYPOINT ["/usr/local/bin/vbmcd", "--foreground"]
+#CMD ["/usr/local/bin/vbmcd", "--foreground"]
+
+# Set a default command useful for debugging
+#CMD ["/bin/bash", "--login"]
 
