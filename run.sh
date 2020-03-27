@@ -7,7 +7,7 @@ if [[ "${DOCKER_ID}" != "" ]]; then
 else
 	docker run \
 	-d --privileged \
-	--restart=on-failure \
+	--restart=always \
 	--network=host \
 	-v /var/run/libvirt:/var/run/libvirt \
 	-v /etc/virtualbmc:/etc/virtualbmc \
