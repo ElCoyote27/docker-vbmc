@@ -33,8 +33,10 @@ RUN rm -Rf /var/cache/apt/archives/partial/*
 
 ENV PATH="/usr/local/bin:${PATH}"
 
-ENTRYPOINT ["/usr/local/bin/vbmcd", "--foreground"]
-#CMD ["/usr/local/bin/vbmcd", "--foreground"]
+COPY vbmc.sh /usr/local/bin/vbmc.sh
+RUN chmod +x /usr/local/bin/vbmc.sh
+
+ENTRYPOINT ["/usr/local/bin/vbmc.sh", "--foreground"]
 
 # Set a default command useful for debugging
 #CMD ["/bin/bash", "--login"]
