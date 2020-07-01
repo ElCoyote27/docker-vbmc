@@ -36,7 +36,8 @@ ENV PATH="/usr/local/bin:${PATH}"
 COPY vbmc.sh /usr/local/bin/vbmc.sh
 RUN chmod +x /usr/local/bin/vbmc.sh
 
-ENTRYPOINT ["/usr/local/bin/vbmc.sh", "--foreground"]
+#ENTRYPOINT ["/usr/local/bin/vbmc.sh", "--foreground"]
+ENTRYPOINT ["/usr/local/bin/vbmc.sh"]
 
 # Set a default command useful for debugging
 #CMD ["/bin/bash", "--login"]
