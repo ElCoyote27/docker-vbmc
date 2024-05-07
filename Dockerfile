@@ -22,10 +22,11 @@ RUN apt-get update --fix-missing
 USER root
 
 # Packages
-RUN apt-get install -y libvirt-dev ipmitool python python-setuptools python-six python-cryptography libvirt0
-RUN apt-get install -y python-pip pkg-config libvirt-dev
+RUN apt-get install -y libvirt-dev ipmitool python python-setuptools python-six libvirt0
+RUN apt-get install -y python3-pip pkg-config libvirt-dev
 RUN apt-get clean
-RUN pip install virtualbmc
+RUN python -m pip install --upgrade pip
+RUN pip install virtualbmc==2.2.2
 
 RUN rm -Rf /var/lib/apt/lists/*
 RUN rm -Rf /var/cache/apt/archives/*.deb

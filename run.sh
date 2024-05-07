@@ -1,6 +1,6 @@
 #!/bin/sh
 NAME=krynn-vbmc
-export DOCKER_ID="$(docker ps -aq --filter name=krynn-vbmc)"
+export DOCKER_ID="$(docker ps -aq --filter name=${NAME})"
 
 if [[ "${DOCKER_ID}" != "" ]]; then
 	docker start ${NAME}
